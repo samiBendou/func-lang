@@ -1,3 +1,5 @@
-# spec-that-sheet
+spec-that-sheet
+################################################################################################
 
-XML standard format for system functional specification
+A description language for system functional specification
+
