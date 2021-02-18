@@ -20,17 +20,17 @@ This project aims at specifying a description language and associated tools goin
 Needs
 ------------------------------------------------------------------------------------------------
 
-The need for better system specification tools can be split in severals key points:
+The need for better system specification tools can be split in severals *key points*:
 
-* Behavior design and validation tools
-* Guidelines and consistency checkers
-* Integrated development environnement
-* Modern version control and traceability
+* **Behavior design and validation tools**
+* **Guidelines and consistency checkers**
+* **Integrated development environnement**
+* **Modern version control and traceability**
 
 Features
 ------------------------------------------------------------------------------------------------
 
-Considering the needs expressed above, the following features are in the scope of this project:
+Considering the needs expressed above, the following features are in the *scope of this project*:
 
 * Core model to represent arithmetics, formal logic, linear and functional algebra
 * Core model to represent physical units and dimensions
@@ -72,7 +72,7 @@ Semantic, orthographic and syntactic
 Misc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*Ask for yours !*
+- *Ask for yours !*
 
 Documentation
 ================================================================================================
