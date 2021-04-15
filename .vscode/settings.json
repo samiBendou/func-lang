@@ -1,4 +1,7 @@
 {
     "restructuredtext.builtDocumentationPath" : "${workspaceRoot}/build",
-    "restructuredtext.confPath": "${workspaceRoot}/source"
+    "restructuredtext.confPath": "${workspaceRoot}/source",
+    "cSpell.words": [
+        "bygroups"
+    ]
 }
