@@ -2,6 +2,7 @@
     "restructuredtext.builtDocumentationPath" : "${workspaceRoot}/build",
     "restructuredtext.confPath": "${workspaceFolder}/source",
     "cSpell.words": [
-        "bygroups"
+        "bygroups",
+        "ftools"
     ]
 }
