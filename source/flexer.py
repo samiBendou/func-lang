@@ -1,3 +1,5 @@
+# Sami Dahoux (c) 2021 copyright, all rights reserved
+
 import re
 from pygments.lexer import RegexLexer, bygroups, include, words
 from pygments.token import *

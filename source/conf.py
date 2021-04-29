@@ -1,3 +1,5 @@
+# Sami Dahoux (c) 2021 copyright, all rights reserved
+
 import sys
 import os
 
