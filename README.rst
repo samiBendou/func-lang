@@ -3,19 +3,26 @@ spec-that-sheet
 
 **Productivity for system functional specification**
 
-Progress
+Progress...
 ================================================================================================
 
-* Feb. 18, 2021 - Expressing initial need and answer proposition
-  
+* **Apr. 15, 2021** - First release of language specification
+* **Mar. 28, 2021** - Prototyping first version of VSCode syntax extension
+* **Mar. 02, 2021** - Prototyping first version of core language library
+* **Feb. 18, 2021** - Expressing initial need and answer proposition
 
+Contribute!
+================================================================================================
+
+This project has just started and *any initiative will be greatly welcome*, the more point of views we have,
+the best improvements we can provide.
+
+*Issues and improvements are welcomed!*
+
+*Do not hesitate to ask for your own projects to appear here!*
+  
 Overview
 ================================================================================================
-
-In the context of the growing complexity of multi-domain systems, such as aeronautic or rail systems, 
-the need for a better *traceability*, *completeness* and *validation* of functional specification has increased.
-This is the opportunity to provide better design *tools* for system engineers and better *information systems* for project management.
-This project aims at specifying a description language and associated tools going in that direction.
 
 Needs
 ------------------------------------------------------------------------------------------------
@@ -32,18 +39,7 @@ Features
 
 Considering the needs expressed above, the following features are in the *scope of this project*:
 
-* Core model to represent arithmetics, formal logic, linear and functional algebra
-* Core model to represent physical units and dimensions
-* Data model representing the inputs and outputs of the system
-* Data model representing the concepts of the system and their relationships
-* Processing model to simulate and test the behavior of the systems
-* Processing model to validate semantic, orthographic and syntactic
-* Processing model to produce human readable output documents
-
-The main goal being to provide a *description language* that is able to represent the data models,
-*applications* that can perform processing using that language and *libraries* that supports applications development.
-
-**Note** Preferred programming language for the project will be the `Rust <https://www.rust-lang.org/>`_, except for the GUI parts.
+* WIP
 
 Related projects
 ------------------------------------------------------------------------------------------------
@@ -77,8 +73,8 @@ Misc
 Documentation
 ================================================================================================
 
-This project is structured in the form of a `ReadTheDocs <https://readthedocs.org/>`_ documentation, 
-all the specification and associated documentation is provided in the `website <http://github.github.io/samiBendou/spec-that-sheet>`_ associated to this repository.
+This project is structured in the form of a restructuredText documentation powered by sphinx.
+All the specification and associated documentation is provided in the `website <http://github.github.io/samiBendou/spec-that-sheet>`_ associated to this repository.
 
 Contribute
 ================================================================================================

@@ -136,8 +136,10 @@ class FuncLexer(RegexLexer):
             (r'(<<|>>)', Punctuation, 'interval'),
             (r';', Punctuation, '#pop'),
             (BUILTINS, Name.Builtin),
+            (IDENT_PARAM, bygroups(Name.Function, Whitespace, Punctuation)),
             (IDENT, Name.Attribute),
             (r'&&|\|\||\*|\*\*', Operator),
+            (r'\)', Punctuation),
             include('base'),
         ],
 

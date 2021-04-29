@@ -41,23 +41,6 @@ functional specification for any project, concerning any domain of application.
       }
    }
 
-Progress...
-================================================================================================
-
-* **Apr. 14, 2021** - First release of language specification
-* **Mar. 28, 2021** - Prototyping first version of VSCode syntax extension
-* **Mar. 02, 2021** - Prototyping first version of core language library
-* **Feb. 18, 2021** - Expressing initial need and answer proposition
-
-Contribute!
-================================================================================================
-
-This project has just started and *any initiative will be greatly welcome*, the more point of views we have,
-the best improvements we can provide.
-
-*Issues and improvements are welcomed!*
-
-*Do not hesitate to ask for your own projects to appear here!*
 
 Table of Contents:
 ################################################################################################
@@ -74,34 +57,7 @@ Table of Contents:
 
    documentation/home
 
-Related projects:
-################################################################################################
 
-Maths and logic
-================================================================================================
-
-- `Low dimension maths toolbox <https://github.com/samiBendou/geomath>`_
-- Multi dimension math toolbox
-- Formal logic library
-- Functional algebra library
-- *Ask for yours !*
-
-Physics and electronics
-================================================================================================
-
-- `Physics units and dimension <https://github.com/samiBendou/unitflow>`_
-- `Dynamics numerical simulation <https://github.com/samiBendou/dynamics>`_
-- *Ask for yours !*
-
-Natural Language Processing
-================================================================================================
-
-- *Ask for yours !*
-
-Misc
-================================================================================================
-
-- *Ask for yours !*
 
 Indices and tables:
 ################################################################################################
