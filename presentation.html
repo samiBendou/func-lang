@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Context Overview &#8212; func version 1.0.0-alpha 1.0.0-alpha documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Book" href="documentation/home.html" />
+    <link rel="prev" title="Welcome the func language doc!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="context-overview">
+<h1>Context Overview<a class="headerlink" href="#context-overview" title="Permalink to this headline">¶</a></h1>
+<p><em>This parts gives an overview of the idea of a general purpose specification and where did it come from.</em></p>
+<div class="section" id="specification">
+<h2>Specification?<a class="headerlink" href="#specification" title="Permalink to this headline">¶</a></h2>
+<p><em>This parts intends to describe the currently available system description tools and how they relate to the func language.</em></p>
+<p>In the context of complexity growth of <a class="reference external" href="https://en.wikipedia.org/wiki/Multiphysics">multi-domain</a> industrial systems <a class="footnote-reference brackets" href="#id2" id="id1">1</a>,
+the need for more <em>traceability</em>, <em>flexibility</em> and <em>safety</em> of systems has increased.</p>
+<p>Indeed, systems nowadays have different levels of precision in their functional specification.
+This induces that it is critical to <em>trace</em> between items of different specification in order.
+This guarantees that each level of precision in the functional specification behaves as expected by other level.</p>
+<p>Systems nowadays tends to be deployed in very heterogenous environment and this must be done in preserving system overall functional behavior.
+Flexibility in specification is a productivity booster as it avoids functional specification duplicates and the additional design that comes with.</p>
+<p>The consideration regarding safety of systems are increasing, the system must statistically ensure that it is safe regarding official criterion.
+Safe specification allows reduce the time allocated to test phases, a specification that is proved to be safe will be tested less.</p>
+<p>The needs describe above reveals the opportunity to provide better design <em>tools</em> for engineers, developers and
+better <em>information systems</em> for everyone.</p>
+<p>This project aims at providing a <em>system functional description language</em>, the <strong>func</strong>,
+and associated <em>tools</em> going in that direction.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Communication networks, supply chains, software applications, hardware devices, mutli-physics systems …</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">2</span></dt>
+<dd><p>Multi-domain technical specification, including software specification.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="what-is-available">
+<h2>What is available?<a class="headerlink" href="#what-is-available" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modeling-language-based-solutions">
+<h3>Modeling Language based solutions<a class="headerlink" href="#modeling-language-based-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Nowadays, system description frameworks such as respectively UML or SysML frameworks are commonly used to
+describe respectively software systems or multi-physics systems.
+However they seems to reach their limits as the complexity of the systems grows.</p>
+<p>Indeed, system engineers seems to progressively abandon these solutions,
+at the benefits of hand made specification frameworks that are mostly derived from the SysML with specific features.</p>
+<p>These solutions, despite being the only ones working nowadays, are often based on XML files, a file format initially
+destined to client-server heterogeneous communication.</p>
+<p>The XML format is not adapted to the functional description of a system because this last requires only a simple set
+of language elements that is homogeneous to describe a vast range of systems.</p>
+<p>This causes the currently developed solutions to work poorly, implementing slower algorithms and
+introducing a significant complexity increase in version control.</p>
+<p>Furthermore, the modeling language based solutions have been initially though with a particular care for object oriented
+application design which is not enough nowadays regarding the variety of system architecture developed.
+This cause, among others, modeling language to be poorly featured when dealing with non object-oriented systems.</p>
+<p>Lastly, these solution are based on input code that is poorly human readable making operations
+such as diff reading between versions complicated.</p>
+<p>The func language aims at replacing the system description frameworks such as UML or SysML
+by providing a human readable code description of systems that can easily be visualized in any user interface.</p>
+</div>
+<div class="section" id="high-level-synthesis-based-solutions">
+<h3>High Level Synthesis based solutions<a class="headerlink" href="#high-level-synthesis-based-solutions" title="Permalink to this headline">¶</a></h3>
+<p>In microelectronics design, descriptions language such as VHDL or Verilog are used to describe
+ASIC or FPGA components that are latter integrated into embedded electronics boards.</p>
+<p>The description languages allows to perform a synthesis of the description provided by sources files
+in order to give an abstract graph representation of the electronics circuit of the component called the netlist.
+The construction of the netlist involves heuristics that builds a logic gate representation of the component.</p>
+<p>The synthesis process can therefore be seen as a system validation mechanism in the sense that if the heuristic fails
+for expected reasons, it means that the system is not valid, for instance that the component design cannot be synthetizable.</p>
+<p>The func language intends to generalize netlist representation of multi-domain systems in order to give an analogous
+validation that the one that is provided by electronics components synthesis.</p>
+<p>The func language also intends to provide code generation tools that accelerates the specification to implementation
+process using netlist representation.</p>
+</div>
+<div class="section" id="format-proof-based-solutions">
+<h3>Format proof based solutions<a class="headerlink" href="#format-proof-based-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Research in mathematics has proven a growing interest in developing formal proof automated method
+to ensure consistency and correctness of their demonstrations, which is still an active topic.</p>
+<p>Mathematics lead a more general initiative for formal proofing of both science publications.
+Both by providing open-source code associated to the results of publications and by developing standard
+evaluation methods for significance and consistence evaluation.</p>
+<p>The func language intends to provide a compdefinee proofing framework based both on natural language analysis
+and formal validation.</p>
+</div>
+<div class="section" id="block-design-based-solutions">
+<h3>Block design based solutions<a class="headerlink" href="#block-design-based-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Tools such as Simulink or Labview can be seen as a solution to the design behavior and testing issue.
+However they are expensive and do not provide enough output for documentation.
+That because these are only meant for design purpose.
+They also suffer from the lack of production output generation contrary to HLS based solutions.</p>
+<p>The func language is based on functional block representation allowing to generation it from source code and
+therefore providing the same visualization tools of block design solutions without the heavy framework needed.</p>
+<p>The func language also intends to provide a simulation framework allowing to visualize input dynamic behavior.</p>
+</div>
+<div class="section" id="programming-code-based-solutions">
+<h3>Programming code based solutions<a class="headerlink" href="#programming-code-based-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Nowadays, software developers tends to avoid duplicating specification outside of the code
+because of evident versioning issues and the additional work that requires to maintain a separated documentation.</p>
+<p>Solutions such as doxygen or autodoc allows to deal with this issue by generating documentation website
+for software projects.</p>
+<p>This allows to write a compdefinee software specification inside the code and generate a website from code
+and documentation.</p>
+<p>This solution is preferable for small software project, especially when they are mono-language or mono-target.
+However, if these conditions are not verified, for example if the application is composed of multiple APIs
+of various language, such as Restful APIs, it can be useful to express all the functional needs and
+the functional encapsulation of the application in an homogeneous way among the project.</p>
+<p>The func language intends to fulfill this need by providing a specification language that allows to write any API
+specification in a functional form.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>The needs for a specification language are very heterogeneous and should be considered progressively,
+regarding the best opportunities to improve the language.</p>
+<p>Indeed, any stakeholder of an industrial, scientific or open project can be constrained to express its input or
+output functional terms. For example, in the building of an Airbus airplane, many european countries are evolved,
+causing an increasing in technical specification sharing in a standardized way.</p>
+<p>Engineers, researcher, developers, managers are welcomed to contribute to the language specification,
+in order the language to be the more compdefinee and therefore fulfill the maximum of needs.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">func version 1.0.0-alpha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Language presentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Context Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#specification">Specification?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-available">What is available?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Language documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation/home.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/home.html#reference">Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome the func language doc!</a></li>
+      <li>Next: <a href="documentation/home.html" title="next chapter">The Book</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Sami Dahoux, All Rights Reserved.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/presentation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

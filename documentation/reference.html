@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1 Introduction &#8212; func version 1.0.0-alpha 1.0.0-alpha documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="1 Getting Started" href="book.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1><span class="sectnum">1</span> Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The reference establishes the core grammar of the language and its semantic rules.
+If you are not familiar with the language concepts, you may visit <a class="reference internal" href="book.html#book-materials"><span class="std std-ref">2   Materials</span></a> first
+to get introduced to the vocabulary.</p>
+<p>Even thought this section is meant to be a rigorous language specification,
+it is progressive in order to easily explain each element of the grammar using what was already defined.</p>
+<p>You can find it useful to have a precise information on the meaning of a particular syntax you encountered.
+The examples given here are valid and illustrate the correct syntax.</p>
+<p>For each language construct presented a syntax template is provided.
+The templates consist on the comprehensive specification of the language.</p>
+<p>Each template figures elements such as <code class="docutils literal notranslate"><span class="pre">&lt;some_label&gt;</span></code>, these must be replaced with the language
+construct corresponding to the given label.</p>
+</div>
+<div class="section" id="links">
+<span id="reference-links"></span><h1><span class="sectnum">2</span> Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h1>
+<p>A <em>link</em> is a reference to a identifier already defined in the code.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">&lt;</span><span class="n">quantity</span><span class="o">&gt;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="cm">&quot;&quot;&quot;refer to </span><span class="p">{</span><span class="nn">my_target_quantity</span><span class="p">}</span><span class="cm">&quot;&quot;&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Links are resolved during semantic verification.</p></li>
+<li><p>Links can only be present in <a class="reference internal" href="#reference-comment-block-comment"><span class="std std-ref">3.3   Block comment</span></a> and <a class="reference internal" href="#reference-quantity-constraint"><span class="std std-ref">5.3   Constraint</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="comment">
+<span id="reference-comment"></span><h1><span class="sectnum">3</span> Comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h1>
+<p>A <em>comment</em> is a primitive composed of plain text.
+The comments allows to provide additional information to be included during <a class="reference internal" href="book.html#book-materials-document-generation"><span class="std std-ref">2.1.4   Document generation</span></a>.</p>
+<div class="section" id="tags">
+<span id="reference-comment-tags"></span><h2><span class="sectnum">3.1</span> Tags<a class="headerlink" href="#tags" title="Permalink to this headline">¶</a></h2>
+<p>A <em>tag</em> is a user-defined identifier suffixed with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> which can be featured in a <a class="reference internal" href="#reference-comment-block-comment"><span class="std std-ref">3.3   Block comment</span></a>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">@&lt;</span><span class="n">identifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="cm">&quot;&quot;&quot;</span>
+<span class="cp">@rationale</span><span class="cm"> This quantity is meat to ...</span>
+<span class="cp">@remark</span><span class="cm"> Note that ...</span>
+<span class="cp">@desc</span><span class="cm"> Defines the quantity of ...</span>
+<span class="cm">&quot;&quot;&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inline-comment">
+<span id="reference-comment-inline-comment"></span><h2><span class="sectnum">3.2</span> Inline comment<a class="headerlink" href="#inline-comment" title="Permalink to this headline">¶</a></h2>
+<p>An <em>inline comment</em> is a comment line that can be inserted at <strong>any place in the code</strong>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &lt;text&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is an inline comment.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Inline comments are ignored during document generation.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="block-comment">
+<span id="reference-comment-block-comment"></span><h2><span class="sectnum">3.3</span> Block comment<a class="headerlink" href="#block-comment" title="Permalink to this headline">¶</a></h2>
+<p>A <em>block comment</em> is a multi-line comment that applies to the <strong>first element below the comment</strong>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;&lt;text|link|tag&gt;&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="cm">&quot;&quot;&quot;</span>
+<span class="cp">@useful</span><span class="cm"> something useful...</span>
+
+<span class="cm">represents the principal car of the </span><span class="p">{</span><span class="nn">system</span><span class="p">.</span><span class="nn">user</span><span class="p">}</span><span class="cm">.</span>
+<span class="cm">&quot;&quot;&quot;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">car</span><span class="p">:</span><span class="w"> </span><span class="na">Car</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="literals">
+<span id="reference-literals"></span><h1><span class="sectnum">4</span> Literals<a class="headerlink" href="#literals" title="Permalink to this headline">¶</a></h1>
+<p>A <em>literals</em> is a built-in language element that allows to specify the most basic language expression, <em>the constants</em>.</p>
+<p>Literals can be used to build <a class="reference internal" href="book.html#book-materials-state-constraint"><span class="std std-ref">2.1.2   State constraint</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Literals can be compared to programming language literals;</p></li>
+<li><p>Literals are of <strong>arbitrary precision and size</strong>;</p></li>
+<li><p>Literals do not have a type but are constant <a class="reference internal" href="#reference-quantity"><span class="std std-ref">5   Quantity</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="strings">
+<span id="reference-literals-string"></span><h2><span class="sectnum">4.1</span> Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+<p>A <em>string</em> literal is an <strong>immutable character string</strong> provided with a given encoding format.</p>
+<div class="section" id="character-strings">
+<h3><span class="sectnum">4.1.1</span> Character strings<a class="headerlink" href="#character-strings" title="Permalink to this headline">¶</a></h3>
+<p>A <em>character string</em> is a <strong>plain text string</strong> composed of printable and escape ASCII characters.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">format</span><span class="o">&gt;</span><span class="s1">&#39;&lt;text&gt;&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="dl">&#39;</span><span class="s1">This is a string literal</span><span class="s">&#39;</span><span class="w"></span>
+<span class="dl">&#39;</span><span class="s1">This is a string</span><span class="se">\n</span><span class="s1">literal</span><span class="s">&#39;</span><span class="w"></span>
+<span class="nv">utf8</span><span class="dl">&#39;</span><span class="s1">This is a string literal</span><span class="s">&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Only alphanumeric, blanks and escape characters are allowed.</p></li>
+<li><p>Only single quoted string are admissible</p></li>
+<li><p>Strings cannot contain links</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="digit-strings">
+<h3><span class="sectnum">4.1.2</span> Digit strings<a class="headerlink" href="#digit-strings" title="Permalink to this headline">¶</a></h3>
+<p>A <em>digit string</em> is a string that encodes a <strong>number in a given numerical basis</strong>.</p>
+<p>The list of characters corresponding to the domain are implicitly ordered in ASCII order, starting to 0.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">basis</span><span class="o">&gt;</span><span class="s1">&#39;&lt;digits&gt;&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="nv">h</span><span class="dl">&#39;</span><span class="s1">ff0011</span><span class="s">&#39;</span><span class="w"></span>
+<span class="nv">b</span><span class="dl">&#39;</span><span class="s1">000100</span><span class="s">&#39;</span><span class="w"></span>
+<span class="nv">o</span><span class="dl">&#39;</span><span class="s1">002727</span><span class="s">&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only octal, binary and hexadecimal digit list are allowed</p>
+</div>
+</div>
+</div>
+<div class="section" id="numerics">
+<h2><span class="sectnum">4.2</span> Numerics<a class="headerlink" href="#numerics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="boolean">
+<h3><span class="sectnum">4.2.1</span> Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
+<p>A <em>boolean</em> literal is either <strong>true or false</strong>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">true</span><span class="o">|</span><span class="n">false</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="nv">false</span><span class="w"></span>
+<span class="nv">true</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="integer">
+<h3><span class="sectnum">4.2.2</span> Integer<a class="headerlink" href="#integer" title="Permalink to this headline">¶</a></h3>
+<p>An <em>integer</em> literal is a <strong>numerical token</strong> expressing a signed integer number.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">sign</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">digits</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="il">122331313</span><span class="w"></span>
+<span class="il">-1333</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rational">
+<h3><span class="sectnum">4.2.3</span> Rational<a class="headerlink" href="#rational" title="Permalink to this headline">¶</a></h3>
+<p>A <em>rational</em> literal is a <strong>numerical token</strong> expressing a rational number.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">sign</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">digits</span><span class="o">&gt;//&lt;</span><span class="n">digits</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="il">1223//4424</span><span class="w"></span>
+<span class="il">-3//4</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No spaces are allowed around the <code class="docutils literal notranslate"><span class="pre">//</span></code> symbol.</p>
+</div>
+</div>
+<div class="section" id="decimal">
+<h3><span class="sectnum">4.2.4</span> Decimal<a class="headerlink" href="#decimal" title="Permalink to this headline">¶</a></h3>
+<p>A <em>decimal</em> literal is a <strong>numerical token</strong> expressing a decimal number.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">&lt;</span><span class="n">sign</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">digits</span><span class="o">&gt;</span><span class="p">[</span><span class="o">.&lt;</span><span class="n">digits</span><span class="o">&gt;</span><span class="p">][</span><span class="n">e</span><span class="p">[</span><span class="o">&lt;</span><span class="n">sign</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">digits</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="mf">1500.</span><span class="il">75</span><span class="w"></span>
+<span class="mf">23e6</span><span class="w"></span>
+<span class="mf">1e-6</span><span class="w"></span>
+<span class="mf">-1.</span><span class="il">75</span><span class="w"></span>
+<span class="mf">-2.</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The count of significant digits must be correct.</p></li>
+<li><p>No spaces are allowed around the <code class="docutils literal notranslate"><span class="pre">e</span></code> symbol.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="special">
+<h3><span class="sectnum">4.2.5</span> Special<a class="headerlink" href="#special" title="Permalink to this headline">¶</a></h3>
+<p>A <em>special</em> number literal is a <strong>literal token</strong> reserved for mathematical constants such as pi,
+or Euler’s number.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="nv">PI</span><span class="w"></span>
+<span class="nv">EULER</span><span class="w"></span>
+<span class="nv">IM</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="quantity">
+<span id="reference-quantity"></span><h1><span class="sectnum">5</span> Quantity<a class="headerlink" href="#quantity" title="Permalink to this headline">¶</a></h1>
+<p>A <em>quantity</em> is a component of the state defined in the <a class="reference internal" href="book.html#book-materials-functional-specification"><span class="std std-ref">2.1.1   Functional specification</span></a>.</p>
+<p>A quantity is expected to belong to a certain domain via a <a class="reference internal" href="#reference-quantity-constraint"><span class="std std-ref">5.3   Constraint</span></a>.</p>
+<p>The general syntax to define a quantity is the following:</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span> <span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span> <span class="p">[:</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">status</span><span class="p">:</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="il">0</span><span class="w"> </span><span class="p">]];</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="py">temperature</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="nv">message</span><span class="err">;</span><span class="w"> </span><span class="c1"># belongs to any</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If no constraint is specified the quantity implicitly belongs to <code class="docutils literal notranslate"><span class="pre">any</span></code></p></li>
+<li><p>Quantities can also be domains and there it is possible to write <code class="docutils literal notranslate"><span class="pre">define</span> <span class="pre">q1:</span> <span class="pre">q2</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="explanations">
+<h2><span class="sectnum">5.1</span> Explanations<a class="headerlink" href="#explanations" title="Permalink to this headline">¶</a></h2>
+<p>The most simple example for a state constraint is the equality between quantities:</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">sensor_temperature</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">cabin_temperature</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sensor_temperature</span><span class="w"> </span><span class="p">]];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the above example we can observe that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cabin_temperature</span></code> is constrained to be equal to the <code class="docutils literal notranslate"><span class="pre">sensor_temperature</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cabin_temperature</span></code> implicitly belongs to the singdefineon set composed of <code class="docutils literal notranslate"><span class="pre">sensor_temperature</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The above syntax is especially convenient for simple constraints</p></li>
+<li><p>Complex constraints should be expressed using <a class="reference internal" href="#reference-components-constraint"><span class="std std-ref">6.3   Requirement</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modifier">
+<h2><span class="sectnum">5.2</span> Modifier<a class="headerlink" href="#modifier" title="Permalink to this headline">¶</a></h2>
+<p>The quantity <em>modifiers</em> are statements about the scope of a certain quantity,
+they allow to differentiate between internals and external system state components.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">constant</span><span class="p">]</span> <span class="p">[</span><span class="nb">input</span><span class="o">|</span><span class="n">output</span><span class="o">|</span><span class="n">buffer</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="py">sensor_temperature</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="py">cabin_temperature</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constraint">
+<span id="reference-quantity-constraint"></span><h2><span class="sectnum">5.3</span> Constraint<a class="headerlink" href="#constraint" title="Permalink to this headline">¶</a></h2>
+<p>A <em>constraint</em> is an assertion about a certain quantity restricting its domain of belonging.
+A constraint can itself be seen as a domain, which is the domain of validity of the constraint.</p>
+<p>These can be listed by separating each constraint with a blank.
+Doing so is equivalent to require that each constraint is met during verification.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="k">input</span><span class="w"> </span><span class="py">sensor_temperature</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="il">10</span><span class="w"> </span><span class="p">]];</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="domain">
+<span id="reference-quantity-constraint-domain"></span><h3><span class="sectnum">5.3.1</span> Domain<a class="headerlink" href="#domain" title="Permalink to this headline">¶</a></h3>
+<p>The <em>domains</em> constraint are the most simple form of constraints.
+These assert that a quantity belongs to a previously defined domain.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">issue_point</span><span class="p">:</span><span class="w"> </span><span class="na">PointBlades</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="builtin">
+<h4><span class="sectnum">5.3.1.1</span> Builtin<a class="headerlink" href="#builtin" title="Permalink to this headline">¶</a></h4>
+<p>The language provide <em>builtin</em> domains such as <code class="docutils literal notranslate"><span class="pre">real</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code>, …</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boolean</span><span class="o">|</span><span class="n">integer</span><span class="o">|</span><span class="n">rational</span><span class="o">|</span><span class="n">decimal</span><span class="o">|</span><span class="n">real</span><span class="o">|</span><span class="nb">complex</span><span class="o">|</span><span class="n">empty</span><span class="o">|</span><span class="nb">any</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">friction_area</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">current</span><span class="p">:</span><span class="w"> </span><span class="nb">complex</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="explicit">
+<h4><span class="sectnum">5.3.1.2</span> Explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">¶</a></h4>
+<p>An <em>explicit</em> domain is an explicit enumeration of primitives composing the domain.
+These primitives must be heterogeneous.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span> <span class="o">&lt;</span><span class="n">literal</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">literal</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span> <span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">Spin</span><span class="p">:</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="dl">&#39;</span><span class="s1">Up</span><span class="s">&#39;</span><span class="p">,</span><span class="w"> </span><span class="dl">&#39;</span><span class="s1">Down</span><span class="s">&#39;</span><span class="p">,</span><span class="w"> </span><span class="dl">&#39;</span><span class="s1">Strange</span><span class="s">&#39;</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">Opcode</span><span class="p">:</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="nv">h</span><span class="dl">&#39;</span><span class="s1">ff00</span><span class="s">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nv">h</span><span class="dl">&#39;</span><span class="s1">ff01</span><span class="s">&#39;</span><span class="p">,</span><span class="w"> </span><span class="nv">h</span><span class="dl">&#39;</span><span class="s1">ff02</span><span class="s">&#39;</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">Temperature</span><span class="p">:</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="mf">90.</span><span class="il">0</span><span class="p">,</span><span class="w"> </span><span class="il">110</span><span class="p">,</span><span class="w"> </span><span class="il">200</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="intervals">
+<h4><span class="sectnum">5.3.1.3</span> Intervals<a class="headerlink" href="#intervals" title="Permalink to this headline">¶</a></h4>
+<p>An <em>interval</em> is a continuous part of a straight.
+It correspond to the notion of <a class="reference external" href="https://en.wikipedia.org/wiki/Interval_(mathematics)">mathematical intervals</a>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;|&gt;&gt;</span> <span class="o">&lt;</span><span class="n">real</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">real</span><span class="o">&gt;</span> <span class="o">&lt;&lt;|&gt;&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">OneOne</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">-1</span><span class="p">:</span><span class="il">1</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">ExclOneOne</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="mf">-1.</span><span class="p">:</span><span class="mf">1.</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="product">
+<h4><span class="sectnum">5.3.1.4</span> Product<a class="headerlink" href="#product" title="Permalink to this headline">¶</a></h4>
+<p>The <em>product</em> matches the mathematical <a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_product">cartesian product</a>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="o">*</span> <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="o">*</span> <span class="o">...</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">RealPair</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">Rectangle</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">-1</span><span class="p">:</span><span class="il">1</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">0</span><span class="p">:</span><span class="il">2</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="union">
+<h4><span class="sectnum">5.3.1.5</span> Union<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h4>
+<p>The <em>union</em> matches the mathematical <a class="reference external" href="https://en.wikipedia.org/wiki/Union_(set_theory)">union binary operator</a>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="o">||</span> <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="o">||</span> <span class="o">...</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">NotZero</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">-1</span><span class="p">:</span><span class="il">0</span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="il">0</span><span class="p">:</span><span class="il">1</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">MinusOneTwo</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">-1</span><span class="p">:</span><span class="il">1</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">0</span><span class="p">:</span><span class="il">2</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="intersection">
+<h4><span class="sectnum">5.3.1.6</span> Intersection<a class="headerlink" href="#intersection" title="Permalink to this headline">¶</a></h4>
+<p>The <em>intersection</em> matches the mathematical <a class="reference external" href="https://en.wikipedia.org/wiki/Intersection_(set_theory)">intersection binary operator</a>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span> <span class="o">...</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">Empty</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">-1</span><span class="p">:</span><span class="il">0</span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="il">0</span><span class="p">:</span><span class="il">1</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">ZeroOne</span><span class="p">:</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">-1</span><span class="p">:</span><span class="il">1</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="il">0</span><span class="p">:</span><span class="il">2</span><span class="p">&gt;&gt;;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="power-set">
+<h4><span class="sectnum">5.3.1.7</span> Power set<a class="headerlink" href="#power-set" title="Permalink to this headline">¶</a></h4>
+<p>The <em>power set</em> of a domain matches the mathematical <a class="reference external" href="https://en.wikipedia.org/wiki/Power_set">power set</a>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;**</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">SetsOfReal</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="o">**</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">SetsOfIssue</span><span class="p">:</span><span class="w"> </span><span class="p">((</span><span class="w"> </span><span class="dl">&#39;</span><span class="s1">A</span><span class="s">&#39;</span><span class="p">,</span><span class="w"> </span><span class="dl">&#39;</span><span class="s1">B</span><span class="s">&#39;</span><span class="p">,</span><span class="w"> </span><span class="dl">&#39;</span><span class="s1">C</span><span class="s">&#39;</span><span class="w"> </span><span class="p">))</span><span class="o">**</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="algebraical">
+<h3><span class="sectnum">5.3.2</span> Algebraical<a class="headerlink" href="#algebraical" title="Permalink to this headline">¶</a></h3>
+<p>An <em>algebraical</em> domain is a <a class="reference internal" href="#reference-quantity-constraint-domain"><span class="std std-ref">5.3.1   Domain</span></a>
+that is provided with an additional algebraical structure.
+It can be a vector or tensor space, or any user-defined algebraical construct.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">domain</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">position</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">2</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">multi_pole</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">matrix</span><span class="p">&lt;</span><span class="il">12</span><span class="p">,</span><span class="w"> </span><span class="il">12</span><span class="p">&gt;(</span><span class="nb">complex</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">metric_tensor</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">tensor</span><span class="p">&lt;</span><span class="il">3</span><span class="p">,</span><span class="w"> </span><span class="il">-3</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Elements of numeric domain can be featured in algebraical expressions;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">identifier</span></code> must match a previously defined <em>structure constructor</em>.</p></li>
+</ul>
+</div>
+<div class="section" id="arguments">
+<h4><span class="sectnum">5.3.2.1</span> Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h4>
+<p>The <em>arguments</em> of an algebraical are “template” parameters are passed to the structure to specify
+numerical information on the algebraical structure:</p>
+<ul class="simple">
+<li><p><strong>dimension</strong>, tuple representing the <a class="reference external" href="https://en.wikipedia.org/wiki/Dimension">mathematical dimension</a></p></li>
+<li><p><strong>variance</strong>, dimension with signed indexes to specify the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_of_vectors">tensor variance</a></p></li>
+<li><p><strong>degrees</strong>, such as polynomial or Galois fields degrees</p></li>
+</ul>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">integer</span><span class="p">,</span> <span class="n">integer</span><span class="p">,</span> <span class="o">...&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scalar">
+<span id="reference-quantity-numerics-dimension"></span><h4><span class="sectnum">5.3.2.2</span> Scalar<a class="headerlink" href="#scalar" title="Permalink to this headline">¶</a></h4>
+<p>A <em>scalar</em> is a quantity constrained to be an algebraical of dimension 1.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">light_status</span><span class="p">:</span><span class="w"> </span><span class="nb">boolean</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">score</span><span class="p">:</span><span class="w"> </span><span class="nb">integer</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">pizza_slice</span><span class="p">:</span><span class="w"> </span><span class="nb">rational</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">plane_distance</span><span class="p">:</span><span class="w"> </span><span class="nb">real</span><span class="p">;</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">electric_current</span><span class="p">:</span><span class="w"> </span><span class="nb">complex</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scalar algebras are the canonical ones by default</p>
+</div>
+</div>
+<div class="section" id="vector">
+<h4><span class="sectnum">5.3.2.3</span> Vector<a class="headerlink" href="#vector" title="Permalink to this headline">¶</a></h4>
+<p>A <em>vector</em> is a quantity constrained to belong to a <strong>finite dimension vector space</strong>.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="k">buffer</span><span class="py">_state</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">256</span><span class="p">&gt;(</span><span class="nb">boolean</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">car_speed</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">2</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">quad_speed</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">4</span><span class="p">&gt;(</span><span class="nb">complex</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>components can be <strong>indexed by only one natural number</strong>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="matrix">
+<h4><span class="sectnum">5.3.2.4</span> Matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h4>
+<p>A <em>matrix</em> is a quantity constrained to belong to a <strong>finite dimension matrix space</strong>.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">probability_matrix</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">matrix</span><span class="p">&lt;</span><span class="il">40</span><span class="p">,</span><span class="w"> </span><span class="il">60</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">inertia_matrix</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">matrix</span><span class="p">&lt;</span><span class="il">3</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"> </span><span class="c1"># square matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tensor">
+<h4><span class="sectnum">5.3.2.5</span> Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h4>
+<p>A <em>tensor</em> is a quantity constrained to belong to a <strong>finite dimension tensor space</strong>.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">quad_speed</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">tensor</span><span class="p">&lt;</span><span class="il">4</span><span class="p">&gt;(</span><span class="nb">complex</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">metric_tensor</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">tensor</span><span class="p">&lt;</span><span class="il">4</span><span class="p">,</span><span class="w"> </span><span class="il">4</span><span class="p">&gt;(</span><span class="nb">complex</span><span class="p">);</span><span class="w"></span>
+<span class="k">define</span><span class="w"> </span><span class="py">curvature_tensor</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">tensor</span><span class="p">&lt;</span><span class="il">4</span><span class="p">,</span><span class="w"> </span><span class="il">-4</span><span class="p">,</span><span class="w"> </span><span class="il">-4</span><span class="p">,</span><span class="w"> </span><span class="il">-4</span><span class="p">&gt;(</span><span class="nb">complex</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Matrices and vectors are special kind of tensors providing more algebraical features.</p></li>
+<li><p>Indices signs stands for the variance of the tensor.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="blocks">
+<span id="reference-quantity-blocks"></span><h3><span class="sectnum">5.3.3</span> Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline">¶</a></h3>
+<p>A <em>block</em> constraint is an <strong>expression block that produces a constraint</strong>.</p>
+<p>A constraint block can be expressed in a mathematical, algorithmic or semantic way.</p>
+<p>Blocks are formally checked during <a class="reference internal" href="book.html#book-materials-system-verification"><span class="std std-ref">2.1.3   System verification</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Constraint blocks can make usage of any previously defined quantity.</p>
+</div>
+<div class="section" id="semantic">
+<h4><span class="sectnum">5.3.3.1</span> Semantic<a class="headerlink" href="#semantic" title="Permalink to this headline">¶</a></h4>
+<p>A <em>semantic block</em> is similar to a <a class="reference internal" href="#reference-comment-block-comment"><span class="std std-ref">3.3   Block comment</span></a>
+but is used to textually specify a constraint.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;</span><span class="o">&lt;</span><span class="n">text</span><span class="o">|</span><span class="n">link</span><span class="o">&gt;</span><span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">good_slices</span><span class="p">:</span><span class="w"></span>
+<span class="sd">&quot;&quot;</span>
+<span class="sd">    equal to the </span><span class="p">{</span><span class="nn">pizza_slices</span><span class="p">}</span><span class="sd"> such that ...</span>
+<span class="sd">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Semantic blocks are convenient for systems that do not require formal behavior validation.</p>
+</div>
+</div>
+<div class="section" id="algorithmic">
+<h4><span class="sectnum">5.3.3.2</span> Algorithmic<a class="headerlink" href="#algorithmic" title="Permalink to this headline">¶</a></h4>
+<p>An <em>algorithmic block</em> is an expression block that allows to define an algorithm and
+therefore programmatically specify a constraint.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span>
+    <span class="o">&lt;</span><span class="n">instruction</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="o">&lt;</span><span class="n">instruction</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="o">...</span>
+    <span class="o">&lt;</span><span class="n">operator</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span>
+<span class="p">}}</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">good_slices</span><span class="p">:</span><span class="w"></span>
+<span class="p">{{</span><span class="w"></span>
+<span class="w">    </span><span class="k">let</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pizza_slices</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">let</span><span class="w"> </span><span class="nv">b</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="il">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nv">a</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nv">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="il">5</span><span class="w"></span>
+<span class="p">}};</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Algorithmic blocks are convenient for systems that require a formal validation simpler than a formal proof.</p>
+</div>
+</div>
+<div class="section" id="mathematic">
+<h4><span class="sectnum">5.3.3.3</span> Mathematic<a class="headerlink" href="#mathematic" title="Permalink to this headline">¶</a></h4>
+<p>A <em>mathematic block</em> is an expression block that allows to define literal variables
+and use mathematical language to state properties about the variables.</p>
+<p>A mathematical constraint allows to define</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span>
+    <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="o">...</span>
+    <span class="o">&lt;</span><span class="n">operator</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span>
+<span class="p">]]</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="py">good_slices</span><span class="p">:</span><span class="w"></span>
+<span class="p">[[</span><span class="w"></span>
+<span class="w">    </span><span class="nv">let</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">pizza_slices</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nv">let</span><span class="w"> </span><span class="nv">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="il">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nv">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="il">5</span><span class="w"></span>
+<span class="p">]];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In the above example, the existence of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> is verified during system verification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mathematic blocks are convenient for systems that require a mathematical validation of behavior.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="function">
+<h2><span class="sectnum">5.4</span> Function<a class="headerlink" href="#function" title="Permalink to this headline">¶</a></h2>
+<p>A <em>function</em> is analogous to a <a class="reference external" href="https://en.wikipedia.org/wiki/Function_(mathematics)">mathematical function</a>.
+It is a special quantity belonging to a functional domain.</p>
+<p>Functions can be used to define <strong>relationships between input and output quantities</strong>.</p>
+<p>A function can be defined using the keyword <code class="docutils literal notranslate"><span class="pre">function</span></code>:</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">parameter</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">parameter</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="p">[:</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">...</span> <span class="p">;]</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="nv">x</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">2</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nv">y</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">2</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">):</span><span class="w"></span>
+<span class="w">    </span><span class="nb">real</span><span class="w"> </span><span class="p">[[</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="nv">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="il">2</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="il">1//2</span><span class="p">)</span><span class="w"> </span><span class="p">]];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Functions can take <em>parameters</em> and specifies a template constraint.
+The parameters can latter be specified to instantiate the constraint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Constraint blocks of a function can make usage of the provided parameters.</p>
+</div>
+</div>
+</div>
+<div class="section" id="components">
+<span id="reference-components"></span><h1><span class="sectnum">6</span> Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h1>
+<p>The <em>components</em> are the elementary building blocks of the func language.</p>
+<p>Components are all gathered in a source file consists on a system as defined in <a class="reference internal" href="book.html#book-materials-functional-specification"><span class="std std-ref">2.1.1   Functional specification</span></a>.</p>
+<p>Components can be provided with a block comment immediately above the component definition.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">block</span><span class="o">|</span><span class="n">quantity</span><span class="o">|</span><span class="n">requirement</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A system can contain multiple sub-systems. Therefore:</p>
+<ul class="simple">
+<li><p>Sources files can be included within each other</p></li>
+<li><p>The language must be provided a component that can embed components</p></li>
+</ul>
+</div>
+<div class="section" id="block">
+<h2><span class="sectnum">6.1</span> Block<a class="headerlink" href="#block" title="Permalink to this headline">¶</a></h2>
+<p>A <em>block</em> is the base container for other components of the language.
+Blocks can be nested, a block can contain any component.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">block</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="n">component</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">component</span><span class="o">&gt;</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">block</span><span class="w"> </span><span class="nn">car_control</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="k">block</span><span class="w"> </span><span class="nn">car_dynamics</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="section" id="scope">
+<h3><span class="sectnum">6.1.1</span> Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h3>
+<p>The components that are in <em>scope</em> of a block are:</p>
+<ul class="simple">
+<li><p>The components of the parent block</p></li>
+<li><p>The components explicitly imported</p></li>
+</ul>
+<p>If a component is not in scope of a block, then it will not be possible reference inside the block.</p>
+<p>In particular, if a quantity is not in scope, it will not be possible to import it in constraints.</p>
+<p>A block can be brought in scope using the keyword <code class="docutils literal notranslate"><span class="pre">import</span></code>.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span> <span class="p">[</span><span class="k">as</span> <span class="o">&lt;</span><span class="n">alias</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">block</span><span class="w"> </span><span class="nn">mozzarella</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">block</span><span class="w"> </span><span class="nn">pizza</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="nn">mozzarella</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If no root block is provided within a source file,
+then components are considered inside a default root block named after the file name of the source.</p>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="sectnum">6.2</span> Quantity<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>A <em>quantity</em> is defined as specified in <a class="reference internal" href="#reference-quantity"><span class="std std-ref">5   Quantity</span></a>.
+All the quantities under a block form the <em>state of the block</em>.</p>
+<p>Quantities can be gathered in more complex structures using the <code class="docutils literal notranslate"><span class="pre">{}</span></code> notation:</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">define</span> <span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="p">[</span><span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span><span class="p">[:</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">...</span><span class="p">];]</span>
+    <span class="p">[</span><span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span><span class="p">[:</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">...</span><span class="p">];]</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This notation provides syntactic sugar to build quantities with labeled field <code class="docutils literal notranslate"><span class="pre">structure.element</span></code>.</p>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">define</span><span class="w"> </span><span class="nc">Car</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="py">position</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">2</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="py">speed</span><span class="p">:</span><span class="w"> </span><span class="nv nv-Decorator">vector</span><span class="p">&lt;</span><span class="il">2</span><span class="p">&gt;(</span><span class="nb">real</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="py">direction</span><span class="p">:</span><span class="w"> </span><span class="na">Direction</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="requirement">
+<span id="reference-components-constraint"></span><h2><span class="sectnum">6.3</span> Requirement<a class="headerlink" href="#requirement" title="Permalink to this headline">¶</a></h2>
+<p>A <em>requirement</em> is a labeled constraint, it is syntactic sugar meant to postpone the constriction of
+a quantity by labeling a list a constraints that applies to that quantity.</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">require</span> <span class="o">&lt;</span><span class="n">identifier</span><span class="o">&gt;</span> <span class="n">on</span> <span class="o">&lt;</span><span class="n">quantity</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">constraint</span><span class="o">&gt;</span> <span class="o">...</span><span class="p">];</span>
+</pre></div>
+</div>
+<div class="highlight-func notranslate"><div class="highlight"><pre><span></span><span class="k">require</span><span class="w"> </span><span class="nf">object_distance</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="py">distance_to_target</span><span class="p">:</span><span class="w"></span>
+<span class="p">[[</span><span class="w"></span>
+<span class="w">    </span><span class="o">&gt;</span><span class="w"> </span><span class="nv">minimal_distance_to_target</span><span class="w"></span>
+<span class="p">]]</span><span class="w"></span>
+<span class="p">[[</span><span class="w"></span>
+<span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">euclidean_distance</span><span class="p">(</span><span class="nv">object</span><span class="p">.</span><span class="nv">position</span><span class="p">,</span><span class="w"> </span><span class="nv">target</span><span class="p">.</span><span class="nv">position</span><span class="p">)</span><span class="w"></span>
+<span class="p">]];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If a quantity is immediately constrained during its definition as saw in <a class="reference internal" href="#reference-quantity"><span class="std std-ref">5   Quantity</span></a>,
+then way say the quantity is <em>anonymously constrained</em>.</p>
+</div>
+</div>
+<div class="section" id="architecture">
+<h1><span class="sectnum">7</span> Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">func version 1.0.0-alpha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Language presentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../presentation.html">Context Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Language documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">The Book</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="home.html#reference">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><span class="sectnum">1</span> Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#links"><span class="sectnum">2</span> Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comment"><span class="sectnum">3</span> Comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#literals"><span class="sectnum">4</span> Literals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantity"><span class="sectnum">5</span> Quantity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components"><span class="sectnum">6</span> Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture"><span class="sectnum">7</span> Architecture</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="home.html">The Book</a><ul>
+      <li>Previous: <a href="book.html" title="previous chapter"><span class="sectnum">1</span> Getting Started</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Sami Dahoux, All Rights Reserved.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/documentation/reference.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

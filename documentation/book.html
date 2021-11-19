@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1 Getting Started &#8212; func version 1.0.0-alpha 1.0.0-alpha documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1 Introduction" href="reference.html" />
+    <link rel="prev" title="The Book" href="home.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1><span class="sectnum">1</span> Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="materials">
+<span id="book-materials"></span><h1><span class="sectnum">2</span> Materials<a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h1>
+<p>This section is intended for anyone who wants to understand the core language concepts.</p>
+<p>It is a good starting point, especially if you are using the func language for the first time.</p>
+<p>The vocabulary and mechanisms are introduced progressively without code example.</p>
+<div class="section" id="system-terminology">
+<span id="book-materials-system"></span><h2><span class="sectnum">2.1</span> System terminology<a class="headerlink" href="#system-terminology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functional-specification">
+<span id="book-materials-functional-specification"></span><h3><span class="sectnum">2.1.1</span> Functional specification<a class="headerlink" href="#functional-specification" title="Permalink to this headline">¶</a></h3>
+<p>A <em>system</em> is an abstract entity that has a <em>behavior</em> and a <em>state</em>.</p>
+<ul class="simple">
+<li><p><strong>state</strong>: characteristics of the system;</p></li>
+<li><p><strong>behavior</strong>: action of the system regarding the state.</p></li>
+</ul>
+<p>In particular, the state can be declined in terms of <em>internals</em> and <em>externals</em> characteristics.
+More precisely, the <em>scope</em> of the state can be one of the following:</p>
+<ul class="simple">
+<li><p><strong>internal</strong>: private to the system;</p></li>
+<li><p><strong>input</strong>: given from an interfaced system;</p></li>
+<li><p><strong>output</strong>: given to an interfaced system;</p></li>
+<li><p><strong>buffer</strong>: shared with an interfaced system.</p></li>
+</ul>
+<p>For instance, the <em>input state</em> of a system consist on the input characteristics of the system externally specified
+by an interfaced system.</p>
+<p>The state can also be <em>constant</em>, meaning its value is given for once and <em>immutable</em>.
+Thus constants will never change in the specification.</p>
+<p>Using this terminology, we say that we <em>specified</em> the behavior of a system
+when it is unambiguously established for each value of the state.</p>
+<p>This is called the <em>functional specification</em> of the system.</p>
+<p>The functional specification <em>sources</em> are the sources file written in func language.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By unambiguously, we mean that can be formally verified as explained in <a class="reference internal" href="#book-materials-system-verification"><span class="std std-ref">2.1.3   System verification</span></a></p>
+</div>
+</div>
+<div class="section" id="state-constraint">
+<span id="book-materials-state-constraint"></span><h3><span class="sectnum">2.1.2</span> State constraint<a class="headerlink" href="#state-constraint" title="Permalink to this headline">¶</a></h3>
+<p>The state of a system is the aggregation of <em>quantities</em> belonging to <em>domains</em>,
+that can be <em>restricted</em> by <em>constraints</em>.</p>
+<ul class="simple">
+<li><p><strong>domain</strong> is analogous to a <a class="reference external" href="https://en.wikipedia.org/wiki/Set_(mathematics)">set in mathematics</a>;</p></li>
+<li><p><strong>quantity</strong> is an element of a domain, it can also be a domain;</p></li>
+<li><p><strong>constraint</strong> is an unambiguous relationship between quantities.</p></li>
+</ul>
+<p>Using this terminology, we say that we <em>constrained</em> a quantity
+when we restricted the domain of belonging of this latter via a constraint.</p>
+<p>Therefore, we define the <em>admissible domain</em> of a quantity to be the restricted domain.
+Doing so for each quantity of the state is called the <em>state constraint</em> of the system.</p>
+<p>The functional specification consists on establishing a valid state constraint of the system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Constraints can be expressed in natural language, pseudo-code or formal language.</p>
+</div>
+</div>
+<div class="section" id="system-verification">
+<span id="book-materials-system-verification"></span><h3><span class="sectnum">2.1.3</span> System verification<a class="headerlink" href="#system-verification" title="Permalink to this headline">¶</a></h3>
+<p>The <em>formal proof</em> of a system is the process of verifying
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Satisfiability">formal satisfiability</a> of the functional specification.</p>
+<p>The functional specification sources are verified by three ways:</p>
+<ol class="arabic simple">
+<li><p><strong>syntactically</strong>, the sources syntax is valid;</p></li>
+<li><p><strong>semantically</strong>,  the sources references are valid;</p></li>
+<li><p><strong>formally</strong>, the state constraints are satisfiable.</p></li>
+</ol>
+<p>Using this terminology, we say that we <em>verified</em> a functional specification
+when we succeeded the tree proofs on this latter.</p>
+<p>Doing so for each functional specification file that relates that system is called the
+<em>system verification</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The functional specifications sources verification can be compared program compilation.</p>
+</div>
+</div>
+<div class="section" id="document-generation">
+<span id="book-materials-document-generation"></span><h3><span class="sectnum">2.1.4</span> Document generation<a class="headerlink" href="#document-generation" title="Permalink to this headline">¶</a></h3>
+<p>The <em>document generation</em> of a system names the process of generating documentary output of the system.</p>
+<p>The document generation produces a customizable output, in various format, given a functional specification.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Output is generated in latex using templates.</p>
+</div>
+</div>
+<div class="section" id="configuration-management">
+<span id="book-materials-descriptive-language"></span><h3><span class="sectnum">2.1.5</span> Configuration management<a class="headerlink" href="#configuration-management" title="Permalink to this headline">¶</a></h3>
+<p>The <em>configuration management</em> refers to the process performing multiple document generation using the same sources.</p>
+<p>This can be achieved by selecting thee specification items to be featured in a generation</p>
+<p>This allows slight changes in the functional behavior that is documented according to the selection performed.</p>
+</div>
+</div>
+<div class="section" id="terminology-usage">
+<h2><span class="sectnum">2.2</span> Terminology usage<a class="headerlink" href="#terminology-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="engineering-usages">
+<h3><span class="sectnum">2.2.1</span> Engineering usages<a class="headerlink" href="#engineering-usages" title="Permalink to this headline">¶</a></h3>
+<p>This terminology is inspired from real world system examples
+where the need for a rigorous specification terminology is critical during solutions design:</p>
+<ul class="simple">
+<li><p>Microelectronics, in components design</p></li>
+<li><p>Embedded systems, device interface and behavior specification</p></li>
+<li><p>Software, object-oriented application design</p></li>
+<li><p>Database, relational database specification</p></li>
+<li><p>Web, especially in heterogenous service environment</p></li>
+</ul>
+<p>However, nowadays other domains far from these can benefit from the usage
+of the vocabulary established in <a class="reference internal" href="#book-materials-functional-specification"><span class="std std-ref">2.1.1   Functional specification</span></a>:</p>
+<ul class="simple">
+<li><p>Industry, in multi-domain technical specification</p></li>
+<li><p>Logistics systems, supply chain specification</p></li>
+<li><p>Research modeling, models specification in verification</p></li>
+<li><p>…</p></li>
+</ul>
+<p>More generally, any domain that needs advanced technical design or scientific modeling
+can use the func language to do it in a concise and human-readable format.</p>
+</div>
+<div class="section" id="descriptive-language">
+<h3><span class="sectnum">2.2.2</span> Descriptive Language<a class="headerlink" href="#descriptive-language" title="Permalink to this headline">¶</a></h3>
+<p>The func is a <em>descriptive language</em>, meaning it is not primarily intended to program but rather to describe systems.</p>
+<p>The func language allows to describe systems using a syntax which is <em>formally progressive</em>.</p>
+<p>This means that the state constraints can by expressed in various ways
+depending on the system verification desired to be performed:</p>
+<ul class="simple">
+<li><p><em>semantic</em>, only natural language</p></li>
+<li><p><em>algorithmic</em>, program correctness</p></li>
+<li><p><em>logic</em>, propositional logic</p></li>
+<li><p><em>mathematic</em>, <a class="reference external" href="https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory">ZFC</a> based logic</p></li>
+</ul>
+<p>The language allows to specify systems using all these means in a unique functional specification,
+the verification will adapt to prove the system as most formally as possible.</p>
+</div>
+</div>
+</div>
+<div class="section" id="tutorials">
+<h1><span class="sectnum">3</span> Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">func version 1.0.0-alpha</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Language presentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../presentation.html">Context Overview</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Language documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="home.html">The Book</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><span class="sectnum">1</span> Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#materials"><span class="sectnum">2</span> Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorials"><span class="sectnum">3</span> Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="home.html#reference">Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="home.html">The Book</a><ul>
+      <li>Previous: <a href="home.html" title="previous chapter">The Book</a></li>
+      <li>Next: <a href="reference.html" title="next chapter"><span class="sectnum">1</span> Introduction</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Sami Dahoux, All Rights Reserved.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/documentation/book.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
