@@ -6,6 +6,8 @@ spec-that-sheet
 Progress...
 ================================================================================================
 
+* **Nov. 15, 2021** - Studied state of the art on specification language
+* **Oct. 15, 2021** - Benchmarked requirement management solutions
 * **Aug. 30, 2021** - Language demonstration software ftools 1.1.0
 * **Apr. 29, 2021** - Language demonstration software ftools 1.0.0
 * **Apr. 15, 2021** - First release of language specification
